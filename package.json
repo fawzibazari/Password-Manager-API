@@ -7,13 +7,22 @@
   "author": "fawzibazari <fawzi.bazari2@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.8",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
+    "cors": "^2.8.5",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "typescript": "^4.5.2",
-    "nodemon": "^2.0.15"
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.2",
+    "pg": "^8.7.3",
+    "typeorm": "^0.2.41",
+    "typescript": "^4.5.2"
   },
   "scripts": {
     "start": "node app.ts",
