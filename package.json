@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/cors": "^2.8.12",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.8",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
@@ -29,7 +30,7 @@
     "dev": "nodemon src/index.ts",
     "build": "tsc -p tsconfig.release.json",
     "build:watch": "tsc -w -p tsconfig.release.json"
-    },
+  },
   "devDependencies": {
     "@types/node": "^17.0.5",
     "prettier": "^2.5.1",

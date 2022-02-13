@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 
 import { createConnection } from 'typeorm';
 import cors from 'cors';
+import { password } from './routes/password';
 
 const app: Application = express();
 
@@ -15,13 +16,15 @@ createConnection({
   username: 'postgres',
   password: 'postgres',
   database: 'password_manager',
-  entities: [__dirname + '/src/models/*.ts'],
+  entities: [__dirname + '/models/*.ts'],
   synchronize: true,
 })
   .then(() => {
     // here you can start to work with your entities
   })
   .catch((error) => console.log(error));
+
+app.use('/', password);
 
 app.get('/', async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).send({
