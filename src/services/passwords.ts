@@ -6,8 +6,13 @@ import { EncryptionServices } from './Encryption';
 export class PasswordServices {
   static async newPassword(req: Request, res: Response) {
     const { password, website } = req.body;
-
-    const EncryptedPassword = await EncryptionServices.encrypt(password);
+    let EncryptedPassword: any = null;
+    try {
+      EncryptedPassword = await EncryptionServices.encrypt(password);
+    } catch (error) {
+      res.status(409).send('check your json');
+      return;
+    }
 
     const passwords = new Passwords();
     passwords.website = website;
