@@ -25,4 +25,11 @@ export class PasswordServices {
 
     res.status(201).send('Password was saved with success 👏');
   }
+
+  static ShowPasswords = async (req: Request, res: Response) => {
+    //Get users from database
+    const PasswordsRepository = getRepository(Passwords);
+    const passwords = await PasswordsRepository.find();
+    res.send(passwords);
+  };
 }

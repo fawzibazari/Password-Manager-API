@@ -4,3 +4,4 @@ import { PasswordServices } from '../services/passwords';
 export const password = Router();
 
 password.post('/addpassword', PasswordServices.newPassword);
+password.get('/getpassword', PasswordServices.ShowPasswords);
