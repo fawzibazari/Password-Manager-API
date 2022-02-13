@@ -2,7 +2,7 @@ import * as crypto from 'crypto';
 import { config as dotenvConfig } from 'dotenv';
 dotenvConfig();
 
-const secret = 'wRq8o794DxbwGIYBTQzg3M0RjuRGpPNH';
+const secret: any = process.env.SECRET_CRYPTO;
 
 export class EncryptionServices {
   static async encrypt(password: string) {
