@@ -15,3 +15,9 @@ password.get(
   IS_AUTHENTIFICATED,
   PasswordServices.ShowPasswords,
 );
+
+password.post(
+  '/decryptpassword',
+  IS_AUTHENTIFICATED,
+  PasswordServices.DecryptPassword,
+);
