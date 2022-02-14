@@ -37,4 +37,8 @@ export class PasswordServices {
     const passwords = await PasswordsRepository.find();
     res.send(passwords);
   };
+  static DecryptPassword = async (req: Request, res: Response) => {
+    res.send(EncryptionServices.decrypt(req.body));
+    return;
+  };
 }
