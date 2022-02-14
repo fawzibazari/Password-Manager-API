@@ -38,7 +38,23 @@ export class PasswordServices {
     res.send(passwords);
   };
   static DecryptPassword = async (req: Request, res: Response) => {
-    res.send(EncryptionServices.decrypt(req.body));
+    res.send(await EncryptionServices.decrypt(req.body));
+    console.log(EncryptionServices.decrypt(req.body));
+
     return;
   };
+  static async deletePassword(req: Request, res: Response) {
+    const id = req.params.id;
+
+    const PasswordsRepository = getRepository(Passwords);
+    let passwords: Passwords;
+    try {
+      passwords = await PasswordsRepository.findOneOrFail(id);
+    } catch (error) {
+      res.status(404).send('User pas trouvé');
+      return;
+    }
+    PasswordsRepository.delete(id);
+    res.status(204).send(passwords);
+  }
 }

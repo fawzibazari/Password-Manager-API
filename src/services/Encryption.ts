@@ -9,7 +9,7 @@ export class EncryptionServices {
     // iv is an identifiar so it can identifie the password, btw we will need it for the decrypt function
     const iv = Buffer.from(crypto.randomBytes(16));
     const cypher = crypto.createCipheriv(
-      'aes-256-gcm',
+      'aes-256-ctr',
       Buffer.from(secret),
       iv,
     );
@@ -27,7 +27,7 @@ export class EncryptionServices {
 
   static async decrypt(EncryptedPassword: any) {
     const decipher = crypto.createDecipheriv(
-      'aes-256-gcm',
+      'aes-256-ctr',
       Buffer.from(secret),
       Buffer.from(EncryptedPassword.iv, 'hex'),
     );
@@ -35,6 +35,8 @@ export class EncryptionServices {
       decipher.update(Buffer.from(EncryptedPassword.password, 'hex')),
       decipher.final(),
     ]);
+
+    console.log(decryptedPassword);
 
     return decryptedPassword.toString();
   }

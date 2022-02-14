@@ -21,3 +21,9 @@ password.post(
   IS_AUTHENTIFICATED,
   PasswordServices.DecryptPassword,
 );
+
+password.delete(
+  '/:id([0-9]+)',
+  IS_AUTHENTIFICATED,
+  PasswordServices.deletePassword,
+);
