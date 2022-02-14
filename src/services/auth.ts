@@ -49,15 +49,28 @@ export class AuthServices {
       res.status(401).send();
     }
 
-    if (!user.checkIfUnencryptedPasswordIsValid(password)) {
-      res.status(401).send('false credentials');
-      return;
+    try {
+      if (!user.checkIfUnencryptedPasswordIsValid(password)) {
+        res.status(401).send('false credentials');
+        return;
+      }
+    } catch (error) {}
+
+    try {
+      const token = jwt.sign({ id: user.id, email: user.email }, secret, {
+        expiresIn: process.env.expiresIn,
+      });
+
+      res.send({ token, expiresIn: process.env.expiresIn, user });
+    } catch (error) {
+      return error;
     }
-
-    const token = jwt.sign({ id: user.id, email: user.email }, secret, {
-      expiresIn: process.env.expiresIn,
-    });
-
-    res.send({ token, expiresIn: process.env.expiresIn, user });
   }
+
+  static listAll = async (req: Request, res: Response) => {
+    //Get users from database
+    const userRepository = getRepository(User);
+    const users = await userRepository.find();
+    res.send(users);
+  };
 }
