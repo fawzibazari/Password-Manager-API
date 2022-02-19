@@ -35,9 +35,6 @@ export class EncryptionServices {
       decipher.update(Buffer.from(EncryptedPassword.password, 'hex')),
       decipher.final(),
     ]);
-
-    console.log(decryptedPassword);
-
     return decryptedPassword.toString();
   }
 }

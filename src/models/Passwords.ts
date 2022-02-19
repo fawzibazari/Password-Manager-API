@@ -6,10 +6,10 @@ export class Passwords {
   id!: number;
 
   @Column()
-  password!: string;
+  website!: string;
 
   @Column()
-  website!: string;
+  password!: string;
 
   @Column()
   iv!: string;

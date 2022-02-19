@@ -5,7 +5,7 @@ import { EncryptionServices } from './Encryption';
 
 export class PasswordServices {
   static async newPassword(req: Request, res: Response) {
-    const { password, website } = req.body;
+    const { website, password } = req.body;
     let EncryptedPassword: any = null;
     try {
       EncryptedPassword = await EncryptionServices.encrypt(password);
@@ -39,8 +39,6 @@ export class PasswordServices {
   };
   static DecryptPassword = async (req: Request, res: Response) => {
     res.send(await EncryptionServices.decrypt(req.body));
-    console.log(EncryptionServices.decrypt(req.body));
-
     return;
   };
   static async deletePassword(req: Request, res: Response) {
