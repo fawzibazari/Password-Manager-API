@@ -15,11 +15,11 @@ passport.use(passportMiddleware);
 
 createConnection({
   type: 'postgres',
-  host: 'localhost',
+  host: 'abul.db.elephantsql.com',
   port: 5432,
-  username: 'postgres',
-  password: 'postgres',
-  database: 'password_manager',
+  username: 'jcpicevq',
+  password: 'aRP0z7fNSSxKINiyml-SM1Y8HrgQYGKr',
+  database: 'jcpicevq',
   entities: [__dirname + '/models/*.ts'],
   synchronize: true,
 })
