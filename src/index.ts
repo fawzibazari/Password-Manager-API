@@ -36,6 +36,6 @@ app.get('/', async (req: Request, res: Response): Promise<Response> => {
     message: 'Running',
   });
 });
-app.listen(4000, () => {
-  console.log('running on http://localhost:4000/');
+app.listen(process.env.PORT || 4000, () => {
+  console.log('running');
 });
