@@ -5,6 +5,8 @@ import { password } from './routes/password';
 import { auth } from './routes/auth';
 import passport from 'passport';
 import passportMiddleware from './middlewares/jwt';
+import { User } from './models/User';
+import { Passwords } from './models/Passwords';
 
 const app: Application = express();
 
@@ -20,7 +22,7 @@ createConnection({
   username: 'jcpicevq',
   password: 'aRP0z7fNSSxKINiyml-SM1Y8HrgQYGKr',
   database: 'jcpicevq',
-  entities: [__dirname + '/models/*.ts'],
+  entities: [User, Passwords],
   synchronize: true,
 })
   .then(() => {
