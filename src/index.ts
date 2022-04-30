@@ -7,6 +7,8 @@ import passport from 'passport';
 import passportMiddleware from './middlewares/jwt';
 import { User } from './models/User';
 import { Passwords } from './models/Passwords';
+import { config as dotenvConfig } from 'dotenv';
+dotenvConfig();
 
 const app: Application = express();
 
@@ -16,12 +18,12 @@ app.use(passport.initialize());
 passport.use(passportMiddleware);
 
 createConnection({
-  type: 'postgres',
-  host: 'abul.db.elephantsql.com',
-  port: 5432,
-  username: 'jcpicevq',
-  password: 'aRP0z7fNSSxKINiyml-SM1Y8HrgQYGKr',
-  database: 'jcpicevq',
+  type: process.env.DB_TYPE as any,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT as unknown as number,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   entities: [User, Passwords],
   synchronize: true,
 })
